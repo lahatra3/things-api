@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Controller, Get, HttpCode, Param, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 
 @Controller()
@@ -10,6 +10,7 @@ export class AppController {
     return this.appService.getLampStatus();
   }
 
+  @HttpCode(200)
   @Post('lamp/:status')
   async patchLampStatus(@Param('status') status: boolean) {
     this.appService.patchLampStatus(status);
@@ -20,6 +21,7 @@ export class AppController {
     return this.appService.getCallStatus();
   }
 
+  @HttpCode(200)
   @Post('call/:status')
   async patchCallStatus(@Param('status') status: boolean) {
     this.appService.patchCallStatus(status);
@@ -30,6 +32,7 @@ export class AppController {
     return this.appService.getDoorStatus();
   }
 
+  @HttpCode(200)
   @Post('door/:status')
   async patchDoorStatus(@Param('status') status: boolean) {
     this.appService.patchDoorStatus(status);
@@ -40,6 +43,7 @@ export class AppController {
     return this.appService.getPowerStatus();
   }
 
+  @HttpCode(200)
   @Post('power/:status')
   async patchPowerStatus(@Param('status') status: boolean) {
     this.appService.patchPowerStatus(status);
